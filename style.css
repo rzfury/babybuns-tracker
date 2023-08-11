@@ -1,0 +1,249 @@
+@font-face {
+  font-family: 'SMB2';
+  src: url(/font/smb2.ttf);
+}
+
+:root {
+  --color-green-1: #325118;
+  --color-green-2: #5E7C40;
+  --color-green-3: #658646;
+  --color-green-4: #7FC73D;
+
+  --color-burrow-west: #D77793;
+  --color-burrow-north: #5591BF;
+  --color-burrow-center: #AF623D;
+  --color-burrow-south: #419997;
+  --color-burrow-east: #5A5B87;
+  --color-burrow-temple: #B9BDBF;
+  --color-burrow-hell: #910D0C;
+}
+
+* {
+  font-family: 'SMB2', sans-serif;
+  color: white;
+}
+
+body {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  margin: 1rem;
+  padding: 2rem;
+  border: 8px dashed var(--color-green-2);
+}
+
+select * {
+  color: initial;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.regular-flexbox {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.text-smol {
+  font-size: 12px;
+}
+
+.text-normal {
+  font-size: 16px;
+}
+
+.text-beeg {
+  font-size: 18px;
+}
+
+.text-gigabun {
+  font-size: 32px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+#bnuy-export-data-wrapper {
+  margin-bottom: 2rem;
+}
+
+.exported-data {
+  height: 256px;
+  padding: 1rem;
+  border: 4px dashed var(--color-green-2);
+  background-color: transparent;
+  color: white;
+  resize: none;
+}
+
+.exported-data:focus {
+  outline: none;
+  border-color: var(--color-green-4);
+}
+
+.select-data {
+  padding: 0.5rem;
+  border: 4px dashed var(--color-green-2);
+  background: transparent;
+  color: var(--color-green-3);
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.select-data:hover {
+  border-color: var(--color-green-4);
+  color: var(--color-green-4);
+}
+
+.check-btn {
+  padding: 0.5rem;
+  border: 4px dashed var(--color-green-2);
+  background: transparent;
+  color: var(--color-green-3);
+  cursor: pointer;
+}
+
+.check-btn:hover {
+  border-color: var(--color-green-4);
+  color: var(--color-green-4);
+}
+
+.divider {
+  border-top: 4px dashed white;
+}
+
+[data-show="false"] {
+  display: none !important;
+  height: 0 !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+}
+
+[data-mated="true"] [data-burrow-area="W"] {
+  color: var(--color-burrow-west);
+}
+
+[data-mated="true"] [data-burrow-area="N"] {
+  color: var(--color-burrow-north);
+}
+
+[data-mated="true"] [data-burrow-area="E"] {
+  color: var(--color-burrow-east);
+}
+
+[data-mated="true"] [data-burrow-area="S"] {
+  color: var(--color-burrow-south);
+}
+
+[data-mated="true"] [data-burrow-area="C"] {
+  color: var(--color-burrow-center);
+}
+
+[data-mated="true"] [data-temple-bunny] {
+  color: var(--color-burrow-temple);
+}
+
+[data-mated="true"] [data-hell-bunny] {
+  color: var(--color-burrow-hell);
+}
+
+[data-mated="true"] [data-void-bunny] {
+  animation: VOID_BUNNY_NAME_ANIM linear infinite 1s;
+}
+
+[data-show-unmated="false"] > [data-mated="false"] {
+  display: none !important;
+  height: 0 !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+}
+
+[data-show-unmated="true"] > [data-mated="false"] * {
+  color: #2E2E2E;
+}
+
+@keyframes VOID_BUNNY_NAME_ANIM {
+  0% {
+    color: var(--color-burrow-west);
+  }
+  16.66% {
+    color: var(--color-burrow-west);
+  }
+  16.67% {
+    color: var(--color-burrow-north);
+  }
+  33.33% {
+    color: var(--color-burrow-north);
+  }
+  33.34% {
+    color: var(--color-burrow-center);
+  }
+  49.98% {
+    color: var(--color-burrow-center);
+  }
+  49.99% {
+    color: var(--color-burrow-south);
+  }
+  66.66% {
+    color: var(--color-burrow-south);
+  }
+  66.67% {
+    color: var(--color-burrow-east);
+  }
+  83.33% {
+    color: var(--color-burrow-east);
+  }
+  83.34% {
+    color: var(--color-burrow-temple);
+  }
+  99.99% {
+    color: var(--color-burrow-temple);
+  }
+  100% {
+    color: var(--color-burrow-hell);
+  }
+  110% {
+    color: var(--color-burrow-hell);
+  }
+}
