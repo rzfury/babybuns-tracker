@@ -4,12 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BabyBuns Tracker</title>
+  <link type="text/css" rel="stylesheet" href="/style.css"/>
 </head>
 <body>
-  <div>
-    BNUY!
-  </div>
+  <main>
+    <div id="bnuy-export-data-wrapper" class="regular-flexbox flex-col" data-show="false">
+      <textarea placeholder="Paste your exported bun couple here" id="exported-data" class="exported-data text-gigabun"></textarea>
+      <div class="regular-flexbox">
+        <div class="regular-flexbox">
+          <select id="bnuy-category" class="select-data text-beeg">
+            <option value="upper_temple" selected>Upper + Temple Bunnies</option>
+            <option value="upper_temple_hell">Upper + Temple + Hell Bunnies (No Void)</option>
+            <option value="void">Void Bunnies</option>
+            <option value="all">All Bunnies</option>
+            <option value="bugs">Bugs Bunnies</option>
+          </select>
+        </div>
+        <button type="button" id="check-bunnies" class="check-btn text-gigabun">CHECK!</button>
+      </div>
+    </div>
+    <div id="comparison-wrapper" class="regular-flexbox flex-col" data-show="false">
+      <div class="text-gigabun">Couples (<span id="category-name"></span>): <span id="collected"></span> / <span id="outof"></span></div>
+      <div>
+        <button id="show-unmated" class="check-btn text-gigabun">Show Unmated</button>
+      </div>
+      <div class="divider">&nbsp</div>
+      <div id="bnuy-list" data-show-unmated="false"></div>
+    </div>
+    <div id="cli-thingy" class="regular-flexbox flex-col"></div>
+    <div>&nbsp;</div>
+    <div class="divider">&nbsp;</div>
+    <div class="text-center text-smol">
+      <div class="mb-2">CREDIT</div>
+      <div class="mb-4">
+        <a href="https://docs.google.com/spreadsheets/d/1J-26EjacbBi8x0Kj90hCfFZvhd0n4nUI_Q5wl9lf6zE" target="_blank" rel="noopener noreferrer">Community spreadsheets</a>
+        <span>&nbsp;:&nbsp;</span>
+        <a href="https://discord.com/invite/phGXxPp" target="_blank" rel="noopener noreferrer">Bunstack Discord</a>
+        <span>&nbsp;:&nbsp;</span>
+        <a href="https://store.steampowered.com/app/1628610/Paquerette_Down_the_Bunburrows/" target="_blank" rel="noopener noreferrer">Paquerette Down the Bunburrows</a>
+      </div>
+      <div class="mb-2">LINKS</div>
+      <div class="mb-4">
+        <a href="https://github.com/rzfury/babybuns-tracker" target="_blank" rel="noopener noreferrer">Github</a>
+      </div>
+    </div>
+  </main>
   <script src="/js/papaparse.min.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/utils-bnuy.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
