@@ -158,35 +158,41 @@ select * {
   overflow: hidden !important;
 }
 
-[data-mated="true"] [data-burrow-area="W"] {
+[data-burrow-area="W"] .burrow,
+[data-burrow-area="W"] .depth {
   color: var(--color-burrow-west);
 }
 
-[data-mated="true"] [data-burrow-area="N"] {
+[data-burrow-area="N"] .burrow,
+[data-burrow-area="N"] .depth {
   color: var(--color-burrow-north);
 }
 
-[data-mated="true"] [data-burrow-area="E"] {
+[data-burrow-area="E"] .burrow,
+[data-burrow-area="E"] .depth {
   color: var(--color-burrow-east);
 }
 
-[data-mated="true"] [data-burrow-area="S"] {
+[data-burrow-area="S"] .burrow,
+[data-burrow-area="S"] .depth {
   color: var(--color-burrow-south);
 }
 
-[data-mated="true"] [data-burrow-area="C"] {
+[data-burrow-area="C"] .burrow,
+[data-burrow-area="C"] .depth {
   color: var(--color-burrow-center);
 }
 
-[data-mated="true"] [data-temple-bunny] {
+[data-temple-bunny] .depth {
   color: var(--color-burrow-temple);
 }
 
-[data-mated="true"] [data-hell-bunny] {
+[data-hell-bunny] .depth {
   color: var(--color-burrow-hell);
 }
 
-[data-mated="true"] [data-void-bunny] {
+[data-void-bunny] .burrow,
+[data-void-bunny] .depth {
   animation: VOID_BUNNY_NAME_ANIM linear infinite 1s;
 }
 
@@ -200,7 +206,7 @@ select * {
 }
 
 [data-show-unmated="true"] > [data-mated="false"] * {
-  color: #2E2E2E;
+  color: #2E2E2E !important;
 }
 
 @keyframes VOID_BUNNY_NAME_ANIM {

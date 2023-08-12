@@ -1,5 +1,3 @@
-const test = ["W-3-1 x N-3-1", "W-3-1 x N-4-1", "W-3-1 x C-3-1", "W-3-1 x S-3-1", "W-6-1 x W-6-2", "W-7-1 x C-7-1", "W-8-1 x N-8-1", "W-8-1 x C-8-1", "W-10-1 x C-10-1", "W-11-1 x W-12-1", "W-11-1 x C-11-1", "W-12-1 x C-11-1", "W-13-1 x C-13-1", "W-15-1 x W-16-1", "W-15-1 x W-17-1", "W-15-1 x W-18-1", "W-16-1 x W-17-1", "W-16-1 x W-18-1", "W-17-1 x W-18-1", "N-3-1 x N-4-1", "N-3-1 x C-3-1", "N-3-1 x S-3-1", "N-4-1 x C-3-1", "N-4-1 x S-3-1", "N-5-1 x C-5-1", "N-7-1 x C-7-1", "N-12-1 x N-13-1", "N-12-1 x N-13-3", "N-12-1 x N-14-1", "N-12-1 x N-15-1", "N-12-1 x N-16-1", "N-12-1 x N-17-1", "N-12-1 x N-18-1", "N-12-1 x C-13-1", "N-13-1 x N-13-3", "N-13-1 x N-14-1", "N-13-1 x N-15-1", "N-13-1 x N-16-1", "N-13-1 x N-17-1", "N-13-1 x N-18-1", "N-13-1 x C-13-1", "N-13-3 x N-14-1", "N-13-3 x N-15-1", "N-13-3 x N-16-1", "N-13-3 x N-17-1", "N-13-3 x N-18-1", "N-13-3 x C-13-1", "N-14-1 x N-15-1", "N-14-1 x N-16-1", "N-14-1 x N-17-1", "N-14-1 x N-18-1", "N-14-1 x C-13-1", "N-15-1 x N-16-1", "N-15-1 x N-17-1", "N-15-1 x N-18-1", "N-15-1 x C-13-1", "N-16-1 x N-17-1", "N-16-1 x N-18-1", "N-16-1 x C-13-1", "N-17-1 x N-18-1", "N-17-1 x C-13-1", "N-17-1 x C-17-1", "N-18-1 x C-13-1", "N-18-1 x C-17-1", "C-1-1 x C-2-1", "C-1-1 x C-3-1", "C-2-1 x C-3-1", "C-3-1 x S-3-1", "C-6-1 x C-7-1", "C-7-1 x S-7-1", "C-7-1 x S-8-1", "C-9-1 x S-9-1", "C-10-1 x S-10-1", "C-11-1 x C-12-1", "C-11-1 x S-10-1", "C-12-1 x S-10-1", "C-13-1 x S-13-1", "C-15-1 x C-16-1", "C-18-1 x C-19-1", "S-4-1 x S-5-1", "S-4-1 x S-6-1", "S-5-1 x S-6-1", "S-7-1 x S-8-1", "S-16-1 x S-17-1", "S-16-1 x S-18-1", "S-16-1 x S-19-1", "S-17-1 x S-18-1", "S-17-1 x S-19-1", "S-18-1 x S-19-1", "E-1-1 x E-2-1", "E-1-1 x E-3-1", "E-1-1 x E-3-4", "E-1-1 x E-4-1", "E-2-1 x E-3-1", "E-2-1 x E-3-4", "E-2-1 x E-4-1", "E-3-2 x E-3-4", "E-3-4 x E-4-1", "E-6-1 x E-7-1"];
-
 /** @type {HTMLDivElement} */
 const cliThingy = document.getElementById('cli-thingy');
 /** @type {HTMLDivElement} */
@@ -117,25 +115,37 @@ function onCheckBunnies() {
   for (const bnuy of mappedBnuyData) {
     const coupleName = `${bnuy[0].id} X ${bnuy[1].id}`;
     const discovered = verifyDiscovered(data.progress, coupleName);
-    const wrapper = createElement('div')
-    const bnuyA = createElementWithText('span', bnuy[0].id);
-    const bnuyB = createElementWithText('span', bnuy[1].id);
-    const bnuySeparator = createElement('span');
+    const wrapper = createElement('div');
     wrapper.setAttribute('data-mated', discovered);
+    
+    const bnuyABurrow = createElementWithText('span', `${bnuy[0].burrow}-`);
+    const bnuyADepth = createElementWithText('span', `${bnuy[0].depth}-${bnuy[0].index}`);
+    const bnuyA = createElement('span', [bnuyABurrow, bnuyADepth]);
+    bnuyABurrow.classList.add('burrow');
+    bnuyADepth.classList.add('depth');
     bnuyA.setAttribute('data-burrow-area', bnuy[0].burrow);
     bnuyA.setAttribute('data-burrow-depth', bnuy[0].depth);
     isTempleBunny(bnuy[0].burrow, bnuy[0].depth) && bnuyA.setAttribute('data-temple-bunny', '')
     isHellBunny(bnuy[0].burrow, bnuy[0].depth) && bnuyA.setAttribute('data-hell-bunny', '')
     isVoidBunny(bnuy[0].burrow) && bnuyA.setAttribute('data-void-bunny', '')
     bnuyA.classList.add('text-gigabun');
+    
+    const bnuyBBurrow = createElementWithText('span', `${bnuy[1].burrow}-`);
+    const bnuyBDepth = createElementWithText('span', `${bnuy[1].depth}-${bnuy[1].index}`);
+    const bnuyB = createElement('span', [bnuyBBurrow, bnuyBDepth]);
+    bnuyBBurrow.classList.add('burrow');
+    bnuyBDepth.classList.add('depth');
     bnuyB.setAttribute('data-burrow-area', bnuy[1].burrow);
     bnuyB.setAttribute('data-burrow-depth', bnuy[1].depth);
     isTempleBunny(bnuy[1].burrow, bnuy[1].depth) && bnuyB.setAttribute('data-temple-bunny', '')
     isHellBunny(bnuy[1].burrow, bnuy[1].depth) && bnuyB.setAttribute('data-hell-bunny', '')
     isVoidBunny(bnuy[1].burrow) && bnuyB.setAttribute('data-void-bunny', '')
     bnuyB.classList.add('text-gigabun');
+
+    const bnuySeparator = createElement('span');
     bnuySeparator.innerHTML = '&nbsp;X&nbsp;';
     bnuySeparator.classList.add('text-gigabun');
+
     wrapper.append(bnuyA, bnuySeparator, bnuyB);
     bnuyList.append(wrapper)
 
