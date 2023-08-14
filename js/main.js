@@ -107,7 +107,7 @@ function onCheckBunnies() {
     const xData = x.split('-');
     const yData = y.split('-');
     return [
-      { id: x, burrow: xData[0], depth: xData[1], index: yData[2] },
+      { id: x, burrow: xData[0], depth: xData[1], index: xData[2] },
       { id: y, burrow: yData[0], depth: yData[1], index: yData[2] },
     ]
   });
