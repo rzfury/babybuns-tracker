@@ -19,6 +19,7 @@ const data = {
     upper_temple: [],
     upper_temple_hell: [],
     void: [],
+    legacy: [],
     bugs: []
   },
   progress: [],
@@ -35,7 +36,7 @@ async function onLoad() {
   showUnmatedBtn.addEventListener('click', (e) => {
     const showUnmated = !(bnuyList.getAttribute('data-show-unmated') === 'true');
     bnuyList.setAttribute('data-show-unmated', showUnmated.toString());
-    showUnmatedBtn.textContent = `${showUnmated ? 'HIDE' : 'SHOW'} UNMATED`;
+    showUnmatedBtn.textContent = `${showUnmated ? 'HIDE' : 'SHOW'} UNPAIRED`;
   });
 
   try {
@@ -45,10 +46,11 @@ async function onLoad() {
     const lastCsvUpdate = await loadJSON('/csv/csv_info.json').catch(e => { throw e; });
     cliThingy.append(createElementWithText('div', `Last Update: ${new Intl.DateTimeFormat().format(Date.parse(lastCsvUpdate.last_updated))}`));
 
-    data.coupleData.all = await loadCSV("/csv/Pâquerette's Baby-Hunting Progress - All Babies.csv").catch(e => { throw e; });
+    data.coupleData.all = await loadCSV("/csv/Pâquerette's Baby-Hunting Progress - All Babies (No Legacy_Bugs).csv").catch(e => { throw e; });
     data.coupleData.upper_temple = await loadCSV("/csv/Pâquerette's Baby-Hunting Progress - Upper+Temple Babies.csv").catch(e => { throw e; });
     data.coupleData.upper_temple_hell = await loadCSV("/csv/Pâquerette's Baby-Hunting Progress - Upper+Temple+Hell Babies (No Void).csv").catch(e => { throw e; });
     data.coupleData.void = await loadCSV("/csv/Pâquerette's Baby-Hunting Progress - Void Babies.csv").catch(e => { throw e; });
+    data.coupleData.legacy = await loadCSV("/csv/Pâquerette's Baby-Hunting Progress - Legacy Babies.csv").catch(e => { throw e; });
     data.coupleData.bugs = await loadCSV("/csv/Pâquerette's Baby-Hunting Progress - Bugs Bunnies.csv").catch(e => { throw e; });
     updateText(elLoadThingy, 'Loading known baby bnuy data... DONE');
     cliThingy.append(createElementWithText('div', 'Known bnuy data successfully loaded!'));
@@ -73,7 +75,8 @@ function parseAndStoreProgress() {
       ['upper_temple', 'Upper + Temple'],
       ['upper_temple_hell', 'Upper + Temple + Hell (No Void)'],
       ['void', 'Void Only'],
-      ['all', 'All'],
+      ['all', 'All (No Legacy/Bugs)'],
+      ['legacy', 'Legacy Only'],
       ['bugs', 'Bugs Only']
     ],
     'Upper + Temple'
@@ -96,6 +99,7 @@ function onCheckBunnies() {
       ['upper_temple_hell', data.coupleData.upper_temple_hell],
       ['void', data.coupleData.void],
       ['all', data.coupleData.all],
+      ['legacy', data.coupleData.legacy],
       ['bugs', data.coupleData.bugs]
     ],
     data.coupleData.upper_temple
@@ -115,8 +119,10 @@ function onCheckBunnies() {
   for (const bnuy of mappedBnuyData) {
     const coupleName = `${bnuy[0].id} X ${bnuy[1].id}`;
     const discovered = verifyDiscovered(data.progress, coupleName);
-    const wrapper = createElement('div');
+    const wrapper = createElement('a');
+    wrapper.setAttribute('target', '_blank');
     wrapper.setAttribute('data-mated', discovered);
+    wrapper.setAttribute('href', `/map.html?pairs=${bnuy[0].id}_${bnuy[1].id}`);
     
     const bnuyABurrow = createElementWithText('span', `${bnuy[0].burrow}-`);
     const bnuyADepth = createElementWithText('span', `${bnuy[0].depth}-${bnuy[0].index}`);

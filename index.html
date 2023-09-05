@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BabyBuns Tracker</title>
-  <link type="text/css" rel="stylesheet" href="/style.css"/>
+  <title>Paquerette Down the Bunburrows - Baby Bunnies Tracker</title>
+  <link rel="canonical" href="https://https://bnuytracker.rzfury.dev/"/>
+  <meta name="description" content="A tracker for a game called Paquerette Down the Bunburrows that let you check for pairs you didn't get yet."/>
+  <meta name="keywords" content="paquerette down the bunburrows, baby bunnies tracker"/>
+  <link type="text/css" rel="stylesheet" href="/css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="/css/checker.css"/>
 </head>
 <body>
   <main>
     <div id="bnuy-export-data-wrapper" class="regular-flexbox flex-col" data-show="false">
-      <textarea placeholder="Paste your exported bun couple here" id="exported-data" class="exported-data text-gigabun"></textarea>
+      <textarea placeholder="Paste your exported bun couples here" id="exported-data" class="exported-data text-gigabun"></textarea>
       <div class="regular-flexbox">
         <div class="regular-flexbox">
           <select id="bnuy-category" class="select-data text-beeg">
-            <option value="upper_temple" selected>Upper + Temple Bunnies</option>
-            <option value="upper_temple_hell">Upper + Temple + Hell Bunnies (No Void)</option>
-            <option value="void">Void Bunnies</option>
-            <option value="all">All Bunnies</option>
+            <option value="upper_temple" selected>Upper + Temple Babies</option>
+            <option value="upper_temple_hell">Upper + Temple + Hell Babies (No Void)</option>
+            <option value="void">Void Babies</option>
+            <option value="all">All Babies (No Legacy/Bugs)</option>
+            <option value="legacy">Legacy Babies</option>
             <option value="bugs">Bugs Bunnies</option>
           </select>
         </div>
@@ -26,7 +31,7 @@
     <div id="comparison-wrapper" class="regular-flexbox flex-col" data-show="false">
       <div class="text-gigabun">Couples (<span id="category-name"></span>): <span id="collected"></span> / <span id="outof"></span></div>
       <div>
-        <button id="show-unmated" class="check-btn text-gigabun">Show Unmated</button>
+        <button id="show-unmated" class="check-btn text-gigabun">Show Unpaired</button>
       </div>
       <div class="divider">&nbsp</div>
       <div id="bnuy-list" data-show-unmated="false"></div>
@@ -52,6 +57,6 @@
   <script src="/js/papaparse.min.js"></script>
   <script src="/js/utils.js"></script>
   <script src="/js/utils-bnuy.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/main/checker.js"></script>
 </body>
 </html>

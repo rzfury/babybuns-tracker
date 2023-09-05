@@ -1,0 +1,98 @@
+@font-face {
+  font-family: 'SMB2';
+  src: url(/font/smb2.ttf);
+}
+
+:root {
+  --color-green-1: #325118;
+  --color-green-2: #5E7C40;
+  --color-green-3: #658646;
+  --color-green-4: #7FC73D;
+
+  --color-burrow-west: #D77793;
+  --color-burrow-north: #5591BF;
+  --color-burrow-center: #AF623D;
+  --color-burrow-south: #419997;
+  --color-burrow-east: #5A5B87;
+  --color-burrow-temple: #B9BDBF;
+  --color-burrow-hell: #910D0C;
+}
+
+* {
+  font-family: 'SMB2', sans-serif;
+  color: white;
+}
+
+body {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  margin: 1rem;
+  padding: 2rem;
+  border: 8px dashed var(--color-green-2);
+}
+
+select * {
+  color: initial;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.regular-flexbox {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.text-smol {
+  font-size: 12px;
+}
+
+.text-normal {
+  font-size: 16px;
+}
+
+.text-beeg {
+  font-size: 18px;
+}
+
+.text-gigabun {
+  font-size: 32px;
+}
+
+.text-center {
+  text-align: center;
+}
